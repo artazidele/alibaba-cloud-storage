@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         put.setProgressCallback(new OSSProgressCallback<PutObjectRequest>() {
             @Override
             public void onProgress(PutObjectRequest request, long currentSize, long totalSize) {
-                Log.d("PutObject", "currentSize: " + currentSize + " totalSize: " + totalSize);
+                //
             }
         });
         OSSAsyncTask task = oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ListObjectsRequest request, ListObjectsResult result) {
                 String objectList = "Objekti: ";
-                Log.d("Get List Success", "Success");
                 for (int i = 0; i < result.getObjectSummaries().size(); i++) {
                     objectList += result.getObjectSummaries().get(i).getKey();
                     if (i == result.getObjectSummaries().size() - 1) {
@@ -194,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(ListObjectsRequest request, ClientException clientException, ServiceException serviceException) {
-                Log.d("Get List Failure", "Failure");
                 textView.setText("Neizdevās iegūt objektu sarakstu.");
             }
         });
